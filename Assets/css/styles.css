@@ -1,9 +1,18 @@
 footer{
     font-family: cursive;
+    background-color: white;
 }
 
 #footerSeparator{
     width:50%; 
     margin-left: 25%; 
     margin-right:25%;
+}
+
+#loginbox{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }

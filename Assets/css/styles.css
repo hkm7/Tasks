@@ -26,3 +26,8 @@ footer{
     background-size: contain;
     background-attachment: fixed;
 }
+
+#bigStylish-text{
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}

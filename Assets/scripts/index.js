@@ -20,7 +20,7 @@ function loginPage(){
 }
 
 function homePage(){
-    document.getElementById('mainBody').innerHTML = "Home page";
+    document.getElementById('mainBody').innerHTML = "<center><p id='bigStylish-text'><h1>Tasks</h1><br><hr id='footerSeparator'><br><h3>Keeping tasks managed and you in track!</center></h3></p>";
     $('#homeBtn').html("<a class='nav-link active' aria-current='page' href='javascript:homePage()'>Home</a>");
     $('#taskList').html("<a class='nav-link' href='javascript:taskPage()'>Task list</a>");
     $('#loginBtn').html("<a class='nav-link' href='javascript:loginPage()'>"+loginString+"</a>");

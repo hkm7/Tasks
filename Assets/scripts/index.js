@@ -3,6 +3,7 @@ document.body.style.backgroundColor = "#808080";
 
 var loginFlag = 0;
 var loginString = "Login";
+var taskNum = 0;
 
 function loginPage(){
     document.body.style.backgroundColor = "#FFFFFF";
@@ -34,21 +35,81 @@ function taskPage(){
     document.body.style.backgroundColor = "#FFFFFF";
 
     if(loginFlag == 0){
-        document.getElementById('mainBody').innerHTML = "<center>You can't access this page because you are not logged in. <br> Please login first.</center>";
+        $('#mainBody').html("<center>You can't access this page because you are not logged in. <br> Please login first.</center>");
     }
     else if(loginFlag==1){
-        document.getElementById('mainBody').innerHTML = "Task page";
+        $('#mainBody').html("<div id='table-div'><table class='table' id='table'><thead class='thead-dark'><tr><th>User ID</th><th>ID</th><th>Title</th><th>Completed</th></tr></thead><tbody></tbody></table><br><hr id='footerSeparator'></div>");
+        loadData();
     }
+}
+
+function loadData(){
+    $.getJSON("https://jsonplaceholder.typicode.com/todos",function(jsonData){
+        $("table").show(2000, "linear");
+        var data ="";
+        $.each(jsonData, function(key,tabledata){
+            data += "<tr>";
+            data += "<td>"+tabledata.userId+"</td>";
+            data += "<td>"+tabledata.id+"</td>";
+            data += "<td>"+tabledata.title+"</td>";
+                
+            if (tabledata.completed == false){
+                data += "<td>"+'<input type="checkbox" disabled=true name="checkbox-' + tabledata + 'id ="checkbox"' + tabledata + '" value="' + tabledata + '" class="custom" />' +"</td>";
+            }
+            else {
+                data += '<td>' + '<input type="checkbox" name="checkbox-' + tabledata + 'id ="checkbox"' + tabledata + '" value="' + tabledata + '" class="custom" />' + '  </td>';
+            }
+            
+            data += '</tr>';
+        });
+            
+        $("#table").append(data);
+            
+        $('input[type="checkbox"]').click(function(){
+
+            if (check = $("input:checkbox:checked").length) {
+                if (check == 5) {
+                    alert("Way to Go! 5 task have been completed!!");
+                }
+            } 
+            else {
+                alert("5 tasks have been unchecked... Start hustling fast!");
+            }
+
+        });
+    });
+}
+
+function myfun(y){
+    var promise = new Promise(function (resolve){
+        if(y == true){
+            taskNum++;
+            if(taskNum == 5){
+                resolve();
+            }
+        }
+        else{
+            taskNum--;
+        }
+    });
+    promise
+    .then(function(){
+        alert("Way to Go! 5 task have been completed!!");
+    })
 }
 
 function Login(){
     let uname = $('#validationCustomUsername').val(); 
     let pwd= $('#password-login').val();
+
     if(uname == "admin" && pwd == "12345"){
         loginFlag = 1;
         loginString = "Admin";
         taskPage();
     } 
+    else{
+        alert("Error: Wrong username or password!");
+    }
 }
 
 function Logout(){

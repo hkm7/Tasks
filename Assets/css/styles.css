@@ -16,3 +16,13 @@ footer{
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+#table-div{    
+    text-align: center;
+    padding-left: 90px;
+    margin: 0 auto;
+    padding-right: 90px;
+    top: 50%;
+    background-size: contain;
+    background-attachment: fixed;
+}

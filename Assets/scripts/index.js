@@ -1,4 +1,4 @@
-document.getElementById('mainBody').innerHTML = "Home page";
+document.getElementById('mainBody').innerHTML = "<center><p id='bigStylish-text'><h1>Tasks</h1><br><hr id='footerSeparator'><br><h3>Keeping tasks managed and you in track!</center></h3></p>";
 document.body.style.backgroundColor = "#808080";
 
 var loginFlag = 0;

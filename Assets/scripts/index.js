@@ -28,8 +28,8 @@ function homePage(){
 
 function taskPage(){
     $('#homeBtn').html("<a class='nav-link' aria-current='page' href='javascript:homePage()'>Home</a>");
-    document.getElementById('taskList').innerHTML = "<a class='nav-link active' href='javascript:taskPage()'>Task list</a>";
-    $('#loginBtn').html("<a class='nav-link active' href='javascript:loginPage()'>"+loginString+"</a>");
+    $('#taskList').html("<a class='nav-link active' href='javascript:taskPage()'>Task list</a>");
+    $('#loginBtn').html("<a class='nav-link' href='javascript:loginPage()'>"+loginString+"</a>");
 
     document.body.style.backgroundColor = "#FFFFFF";
 

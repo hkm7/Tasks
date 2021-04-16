@@ -9,15 +9,12 @@ footer{
     margin-right:25%;
 }
 
-#loginbox{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+#loginBox{
+    margin:10%;
+    border-style: groove;
 }
 
-#table-div{    
+#table-div{
     text-align: center;
     padding-left: 90px;
     margin: 0 auto;
@@ -27,8 +24,19 @@ footer{
     background-attachment: fixed;
 }
 
+#table{   
+    background-color:yellow;
+}
+
 #bigStylish-text{
     text-align: center;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    text-decoration-color: yellow;
+}
+
+#textHome{
+    margin: 10%;
+    padding-top: 4%;
+    padding-bottom: 5%;
+    background-color: yellow;
+    border-radius: 50px;
 }

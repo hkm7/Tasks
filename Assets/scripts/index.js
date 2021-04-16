@@ -1,9 +1,9 @@
-document.getElementById('mainBody').innerHTML = "<center><p id='bigStylish-text'><h1>Tasks</h1><br><hr id='footerSeparator'><br><h3>Keeping tasks managed and you in track!</center></h3></p>";
-document.body.style.backgroundColor = "#808080";
-
 var loginFlag = 0;
 var loginString = "Login";
 var taskNum = 0;
+
+$("#mainBody").html("<center><div id='textHome'><br><p id='bigStylish-text'><h1>Tasks</h1><br><hr id='footerSeparator'><br><h3>Keeping tasks managed and you in track!</h3><br></div></p></center>");
+document.body.style.backgroundColor = "#808080";
 
 function loginPage(){
     document.body.style.backgroundColor = "#FFFFFF";
@@ -12,7 +12,7 @@ function loginPage(){
     $('#loginBtn').html("<a class='nav-link active' href='javascript:loginPage()'>"+loginString+"</a>");
 
     if(loginFlag==0){
-        $("#mainBody").html("<div id='loginBox' style='border-style: groove;'><form class='form' id='loginForm' action='javascript:Login()'><div class='col-md-4'><label for='validationCustomUsername' class='form-label'>Username</label><div class='input-group has-validation'><input type='text' class='form-control' id='validationCustomUsername' aria-describedby='inputGroupPrepend' required=''><div class='invalid-feedback'>Please enter your username.</div></div></div><div class='col-md-4'><label for='Password' class='form-label'>Password</label><input type='password' class='form-control' id='password-login' required=''></div><br><button type='submit' id='loginButton' class='btn btn-primary'>Login</button><br><br></form></div>");
+        $("#mainBody").html("<center><div id='loginBox' class='col-sm-4'><form class='form' id='loginForm' action='javascript:Login()'><div class='col-md-4'><label for='validationCustomUsername' class='form-label'>Username</label><div class='input-group has-validation'><input type='text' class='form-control' id='validationCustomUsername' aria-describedby='inputGroupPrepend' required=''><div class='invalid-feedback'>Please enter your username.</div></div></div><div class='col-md-4'><label for='Password' class='form-label'>Password</label><input type='password' class='form-control' id='password-login' required=''></div><br><button type='submit' id='loginButton' class='btn btn-primary'>Login</button><br><br></form></div></center>");
     }
     else{
         $("#mainBody").html("<br><center><h1>You are logged in as Admin!</h1></center><br><hr id='footerSeparator'><br><a href='javascript:Logout()'><center><h2>Logout</h2></center></a>"); 
@@ -20,7 +20,7 @@ function loginPage(){
 }
 
 function homePage(){
-    document.getElementById('mainBody').innerHTML = "<center><p id='bigStylish-text'><h1>Tasks</h1><br><hr id='footerSeparator'><br><h3>Keeping tasks managed and you in track!</center></h3></p>";
+    document.getElementById('mainBody').innerHTML = "<center><div id='textHome'><p id='bigStylish-text'><h1>Tasks</h1><br><hr id='footerSeparator'><br><h3>Keeping tasks managed and you in track!</center></h3></div></p>";
     $('#homeBtn').html("<a class='nav-link active' aria-current='page' href='javascript:homePage()'>Home</a>");
     $('#taskList').html("<a class='nav-link' href='javascript:taskPage()'>Task list</a>");
     $('#loginBtn').html("<a class='nav-link' href='javascript:loginPage()'>"+loginString+"</a>");
@@ -38,12 +38,13 @@ function taskPage(){
         $('#mainBody').html("<center>You can't access this page because you are not logged in. <br> Please login first.</center>");
     }
     else if(loginFlag==1){
-        $('#mainBody').html("<div id='table-div'><table class='table' id='table'><thead class='thead-dark'><tr><th>User ID</th><th>ID</th><th>Title</th><th>Completed</th></tr></thead><tbody></tbody></table><br><hr id='footerSeparator'></div>");
+        $('#mainBody').html("<br><br><div id='table-div'><table class='table' id='table'><thead class='thead-dark'><tr><th>User ID</th><th>ID</th><th>Title</th><th>Completed</th></tr></thead><tbody></tbody></table><br><hr id='footerSeparator'></div>");
         loadData();
     }
 }
 
 function loadData(){
+    console.log('loadData started');
     $.getJSON("https://jsonplaceholder.typicode.com/todos",function(jsonData){
         $("table").show(2000, "linear");
         var data ="";
@@ -64,7 +65,7 @@ function loadData(){
         });
             
         $("#table").append(data);
-            
+        console.log('data printing start line 68');    
         $('input[type="checkbox"]').click(function(){
 
             if (check = $("input:checkbox:checked").length) {
